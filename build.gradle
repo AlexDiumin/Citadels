@@ -1,5 +1,4 @@
 buildscript {
-    
 
     repositories {
         mavenLocal()
@@ -13,8 +12,8 @@ buildscript {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
         classpath 'com.android.tools.build:gradle:3.4.1'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.6'
-        
 
+        classpath 'me.tatarka:gradle-retrolambda:3.5.0' // ???
     }
 }
 
@@ -45,7 +44,6 @@ allprojects {
 project(":desktop") {
     apply plugin: "java"
 
-
     dependencies {
         implementation /*compile*/ project(":core")
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -56,6 +54,10 @@ project(":desktop") {
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
         
     }
+}
+
+task clean(type: Delete) { // ???
+    delete rootProject.buildDir
 }
 
 project(":android") {
@@ -80,7 +82,11 @@ project(":android") {
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
         implementation /*compile*/ "com.badlogicgames.ashley:ashley:$ashleyVersion"
-        
+
+        /*implementation "com.android.support:support-fragment:28.0.0" // ???
+        implementation "com.android.support:support-v13:28.0.0" // ???*/
+        implementation 'androidx.fragment:fragment:1.0.0' // ???
+        implementation 'androidx.legacy:legacy-support-v13:1.0.0' // ???
     }
 }
 

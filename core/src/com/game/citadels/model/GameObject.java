@@ -8,8 +8,8 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 
-    Rectangle bounds; // позиция, ширина, высота
-    Sprite object;
+    private Rectangle bounds; // позиция, ширина, высота
+    private Sprite object;
 
     GameObject(Texture texture, int x, int y, int width, int height)
     {

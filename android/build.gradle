@@ -17,19 +17,35 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
-            jniLibs.srcDirs = ['libs']
-        }
+//            jniLibs.srcDirs = ['libs']
 
+            // ???
+            jniLibs.srcDir file("E:/Android/Citadels/.gradle/dalvik-sdk/rt/lib")
+        }
     }
     packagingOptions {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.game.citadels"
-        minSdkVersion 9
+//        applicationId "com.game.citadels"
+        minSdkVersion 14/*9*/
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        applicationId "gluonhq.com.myfragment" // ???
+        /*applicationId "gluonhq.com.myfragment"
+        minSdkVersion 25
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"*/
+        multiDexEnabled true // ???
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // ???
+    }
+    dexOptions { // ???
+        preDexLibraries = false
+        additionalParameters=['--core-library']
     }
     buildTypes {
         release {
@@ -40,6 +56,29 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    sourceSets { // ??? ???
+        main {
+            jniLibs.srcDir file("E:/Android/Citadels/.gradle/dalvik-sdk/src/main")
+            assets.srcDirs = ['assets']
+        }
+    }
+    lintOptions { // ???
+        abortOnError false
+    }
+}
+dependencies { // ???
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'E:/Android/Citadels/.gradle/dalvik-sdk/rt/lib/ext')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'androidx.fragment:fragment:1.0.0' // ???
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0' // ???
 }
 
 
@@ -123,7 +162,7 @@ eclipse {
     project {
         name = appName + "-android"
         natures 'com.android.ide.eclipse.adt.AndroidNature'
-        buildCommands.clear();
+        buildCommands.clear()/*;*/
         buildCommand "com.android.ide.eclipse.adt.ResourceManagerBuilder"
         buildCommand "com.android.ide.eclipse.adt.PreCompilerBuilder"
         buildCommand "org.eclipse.jdt.core.javabuilder"
@@ -134,14 +173,14 @@ eclipse {
 // sets up the Android Idea project, using the old Ant based build.
 idea {
     module {
-        sourceDirs += file("src");
+        sourceDirs += file("src")/*;*/
         scopes = [ COMPILE: [plus:[project.configurations.compile]]]        
 
         iml {
             withXml {
                 def node = it.asNode()
-                def builder = NodeBuilder.newInstance();
-                builder.current = node;
+                def builder = NodeBuilder.newInstance()/*;*/
+                builder.current = node/*;*/
                 builder.component(name: "FacetManager") {
                     facet(type: "android", name: "Android") {
                         configuration {
