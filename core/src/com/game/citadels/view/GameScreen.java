@@ -37,7 +37,7 @@ public class GameScreen implements Screen {
     }
 
     // ???
-    public void update() // обновление игровой логики
+    private void update() // обновление игровой логики
     {
 
     }
