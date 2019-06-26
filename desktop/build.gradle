@@ -53,3 +53,7 @@ task afterEclipseImport(description: "Post processing after project generation",
     printer.print(classpath)
   }
 }
+
+dependencies {
+    implementation files('E:\\Android\\MigLayout\\miglayout-core-5.0.jar')
+}

@@ -52,7 +52,9 @@ project(":desktop") {
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
         implementation /*compile*/ "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-        
+
+        implementation 'androidx.fragment:fragment:1.0.0' // ???
+        implementation 'androidx.legacy:legacy-support-v13:1.0.0' // ???
     }
 }
 

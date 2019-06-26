@@ -1,6 +1,11 @@
 apply plugin: "java"
 
 sourceCompatibility = 1.6
+dependencies {
+    implementation files('E:\\Android\\MigLayout\\miglayout-swing-5.0.jar')
+    implementation fileTree(dir: 'E:\\Android\\MigLayout\\miglayout-master', include: ['*.aar', '*.jar'], exclude: [])
+    implementation fileTree(dir: 'E:\\Android\\MigLayout\\miglayout-master\\core\\src\\main\\java', include: ['*.aar', '*.jar'], exclude: [])
+}
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/" ]

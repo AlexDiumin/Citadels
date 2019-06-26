@@ -2,6 +2,7 @@ package com.game.citadels;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.game.citadels.view.GameLobby;
 import com.game.citadels.view.GameScreen;
 
 public class Main extends Game {
@@ -11,7 +12,9 @@ public class Main extends Game {
 	@Override // вызывается при запуске
 	public void create()
 	{
-		gameScreen = new GameScreen();
-		setScreen(gameScreen);
+		/*gameScreen = new GameScreen();
+		setScreen(gameScreen);*/
+
+		GameLobby.createAndShowGUI();
 	}
 }
